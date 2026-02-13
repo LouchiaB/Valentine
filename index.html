@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Will You Be My Valentine? ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('YOUR_BACKGROUND_IMAGE_LINK');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+    }
+
+    h1 {
+      font-size: 50px;
+      background: rgba(0,0,0,0.5);
+      padding: 20px 30px;
+      border-radius: 20px;
+    }
+
+    button {
+      font-size: 22px;
+      padding: 15px 35px;
+      margin: 15px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.2);
+    }
+
+    #noBtn {
+      background-color: #444;
+      color: white;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: fall 3s linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1 id="question">Will You Be My Valentine? 💕</h1>
+
+  <div>
+    <button id="yesBtn">YES 💖</button>
+    <button id="noBtn">NO 😏</button>
+  </div>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const question = document.getElementById("question");
+
+noBtn.addEventListener("mouseover", function() {
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+yesBtn.addEventListener("click", function() {
+
+  document.body.innerHTML = `
+    <h1 style="font-size:60px;background:rgba(0,0,0,0.6);padding:30px;border-radius:20px;">
+      I love you forever ❤️<br>
+      Happy Valentine’s Day 😍
+    </h1>
+  `;
+
+  startHearts();
+});
+
+function startHearts() {
+
+  setInterval(() => {
+
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.classList.add("heart");
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 3000);
+
+  }, 200);
+
+}
+
+</script>
+
+</body>
+</html>
